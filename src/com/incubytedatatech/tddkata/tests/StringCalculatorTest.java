@@ -57,4 +57,9 @@ public class StringCalculatorTest {
 	public void add_shouldThrowNegativeNumberExceptionForNegativeNumber () {
 		assertThrows(NegativeNumberException.class, () -> stringCalculator.add("-3"));
 	}
+	
+	@Test
+	public void add_shouldReturnAdditionOfNumbersWithDelimitersOfAnyLength () {
+		assertEquals(6, stringCalculator.add("//[***]\n1***2***3"));
+	}
 }
