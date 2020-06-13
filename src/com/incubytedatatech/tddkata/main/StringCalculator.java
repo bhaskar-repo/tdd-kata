@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import com.incubytedatatech.tddkata.constants.Constants;
 import com.incubytedatatech.tddkata.exceptions.NegativeNumberException;
 
 public class StringCalculator {
@@ -17,11 +18,11 @@ public class StringCalculator {
 
 	public Integer add(String numbers) {
 		count++;
-		if ("".equals(numbers.trim())) {
+		if (Constants.EMPTYSTRING.equals(numbers.trim())) {
 			return 0;
 		}
 		
-		Pattern pattern = Pattern.compile("-?[0-9]\\d*");
+		Pattern pattern = Pattern.compile(Constants.ONLYNUMBERS);
 		Matcher matcher = pattern.matcher(numbers);
 		List <Integer> intNumbers = matcher.results()
 				.mapToInt(result -> Integer.valueOf(result.group()))
@@ -37,7 +38,7 @@ public class StringCalculator {
 				.collect(Collectors.toList());
 		
 		if (negativeNumbers.size() > 0) {
-			throw new NegativeNumberException("no negatives allowed = " + negativeNumbers.toString());
+			throw new NegativeNumberException(Constants.NEGATIVENUMBERSMSG + negativeNumbers.toString());
 		}
 		return positveNumbers.stream().mapToInt(number -> number).sum();
 	}
