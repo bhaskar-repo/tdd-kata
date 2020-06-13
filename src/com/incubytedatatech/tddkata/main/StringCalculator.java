@@ -1,6 +1,9 @@
 package com.incubytedatatech.tddkata.main;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -10,15 +13,21 @@ public class StringCalculator {
 			return 0;
 		}
 		else {
-			String numberValues[] = numbers.split(",");
-			if (numberValues.length == 1) {
-				return Integer.valueOf(numberValues[0]);
+			Pattern pattern = Pattern.compile("\\d+");
+			Matcher matcher = pattern.matcher(numbers);
+			List <Integer> intNumbers = matcher.results()
+					.mapToInt(result -> Integer.valueOf(result.group()))
+					.boxed()
+					.collect(Collectors.toList());
+			if (intNumbers.size() == 1) {
+				return intNumbers.get(0);
 			}
 			else {
-				return Arrays.stream(numberValues)
-						.mapToInt(number -> Integer.valueOf(number))
-						.sum();
+				
+				return intNumbers.stream().mapToInt(number -> number)
+							  .sum();
 			}
+			
 		}
 		
 		
