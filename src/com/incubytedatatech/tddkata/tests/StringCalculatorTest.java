@@ -29,4 +29,9 @@ public class StringCalculatorTest {
 		String numbers = "1";
 		assertEquals(Integer.valueOf(numbers), stringCalculator.add(numbers));
 	}
+	
+	@Test
+	public void add_shouldReturnAdditionOfTwoNumbers () {
+		assertEquals(3, stringCalculator.add("1,2"));
+	}
 }
