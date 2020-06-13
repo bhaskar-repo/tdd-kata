@@ -77,4 +77,9 @@ public class StringCalculatorTest {
 	public void add_shouldIgnoreNumbersGreaterThan1000AndReturnAddition () {
 		assertEquals(4, stringCalculator.add("20000,\n4"));
 	}
+	
+	@Test
+	public void getCalledCount_shouldReturnCountNumberOfTimesAddInvoked () {
+		assertEquals(12, stringCalculator.getCalledCount ());
+	}
 }
