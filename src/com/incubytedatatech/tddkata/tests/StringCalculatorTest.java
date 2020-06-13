@@ -40,4 +40,9 @@ public class StringCalculatorTest {
 		
 		assertEquals(26, stringCalculator.add("1,2,5,9,3,2,4"));
 	}
+	
+	@Test
+	public void add_shouldReturnAdditionOfNumbersWithAllowedNewLines () {
+		assertEquals(6, stringCalculator.add("1\n2,3"));
+	}
 }
