@@ -45,4 +45,9 @@ public class StringCalculatorTest {
 	public void add_shouldReturnAdditionOfNumbersWithAllowedNewLines () {
 		assertEquals(6, stringCalculator.add("1\n2,3"));
 	}
+	
+	@Test
+	public void add_shouldReturnAdditionOfNumbersWithSupportedDelimiters () {
+		assertEquals(3, stringCalculator.add("//;\n1;2"));
+	}
 }
