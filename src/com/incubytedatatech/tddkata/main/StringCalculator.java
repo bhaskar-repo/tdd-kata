@@ -29,4 +29,8 @@ public class StringCalculator {
 		return positveNumbers.stream().mapToInt(number -> number).sum();
 	}
 
+	public Integer getCalledCount() {
+		return null;
+	}
+
 }
