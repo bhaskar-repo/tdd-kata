@@ -21,16 +21,12 @@ public class StringCalculator {
 				.mapToInt(result -> Integer.valueOf(result.group()))
 				.boxed()
 				.collect(Collectors.toList());
-		if (intNumbers.size() == 1 && intNumbers.get(0) < 0) {
-			throw new NegativeNumberException("no negatives allowed = " + intNumbers.get(0).toString());
+		List<Integer> positveNumbers = intNumbers.stream().filter(number -> number >= 0 && number <= 1000).collect(Collectors.toList());
+		List<Integer> negativeNumbers = intNumbers.stream().filter(number -> number < 0).collect(Collectors.toList());
+		if (negativeNumbers.size() > 0) {
+			throw new NegativeNumberException("no negatives allowed = " + negativeNumbers.toString());
 		}
-		else if (intNumbers.size() == 1) {
-			return intNumbers.get(0);
-		}
-		else {	
-			return intNumbers.stream().mapToInt(number -> number)
-							  .sum();
-			}
+		return positveNumbers.stream().mapToInt(number -> number).sum();
 	}
 
 }
