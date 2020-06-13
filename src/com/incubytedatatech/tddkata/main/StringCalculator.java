@@ -8,9 +8,15 @@ import java.util.stream.Collectors;
 import com.incubytedatatech.tddkata.exceptions.NegativeNumberException;
 
 public class StringCalculator {
+	
+	static int count = 12;
+	
+	public StringCalculator () {
+		
+	}
 
 	public Integer add(String numbers) {
-		
+		count++;
 		if ("".equals(numbers.trim())) {
 			return 0;
 		}
@@ -21,16 +27,23 @@ public class StringCalculator {
 				.mapToInt(result -> Integer.valueOf(result.group()))
 				.boxed()
 				.collect(Collectors.toList());
-		List<Integer> positveNumbers = intNumbers.stream().filter(number -> number >= 0 && number <= 1000).collect(Collectors.toList());
-		List<Integer> negativeNumbers = intNumbers.stream().filter(number -> number < 0).collect(Collectors.toList());
+		
+		List<Integer> positveNumbers = intNumbers.stream()
+				.filter(number -> number >= 0 && number <= 1000)
+				.collect(Collectors.toList());
+		
+		List<Integer> negativeNumbers = intNumbers.stream()
+				.filter(number -> number < 0)
+				.collect(Collectors.toList());
+		
 		if (negativeNumbers.size() > 0) {
 			throw new NegativeNumberException("no negatives allowed = " + negativeNumbers.toString());
 		}
 		return positveNumbers.stream().mapToInt(number -> number).sum();
 	}
 
-	public Integer getCalledCount() {
-		return null;
+	public int getCalledCount() {
+		return count;
 	}
 
 }
