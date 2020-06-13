@@ -2,6 +2,7 @@ package com.incubytedatatech.tddkata.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -10,16 +11,21 @@ import com.incubytedatatech.tddkata.main.StringCalculator;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class StringCalculatorTest {
+	
+	private StringCalculator stringCalculator;
+	
+	@BeforeAll
+	private void itShouldCreateStringCalculatorBeforeAllTestCaseRuns() {
+		stringCalculator = new StringCalculator();
+	}
 
 	@Test
 	public void add_shouldReturn0WhenNumbersIsEmpty () {
-		StringCalculator stringCalculator = new StringCalculator();
 		assertEquals(0, stringCalculator.add(""));
 	}
 	
 	@Test
 	public void add_shouldReturnSameForSingleNumber () {
-		StringCalculator stringCalculator = new StringCalculator();
 		String numbers = "1";
 		assertEquals(Integer.valueOf(numbers), stringCalculator.add(numbers));
 	}
