@@ -16,4 +16,11 @@ public class StringCalculatorTest {
 		StringCalculator stringCalculator = new StringCalculator();
 		assertEquals(0, stringCalculator.add(""));
 	}
+	
+	@Test
+	public void add_shouldReturnSameForSingleNumber () {
+		StringCalculator stringCalculator = new StringCalculator();
+		String numbers = "1";
+		assertEquals(Integer.valueOf(numbers), stringCalculator.add(numbers));
+	}
 }
