@@ -72,4 +72,9 @@ public class StringCalculatorTest {
 	public void add_shouldReturnAdditionOfNumbersWithMultipleDelimitersOfAnyLength () {
 		assertEquals(6, stringCalculator.add("“//[**][%%]\\n1**2%%3"));
 	}
+	
+	@Test
+	public void add_shouldIgnoreNumbersGreaterThan1000AndReturnAddition () {
+		assertEquals(4, stringCalculator.add("20000,\n4"));
+	}
 }

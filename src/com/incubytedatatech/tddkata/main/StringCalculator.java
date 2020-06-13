@@ -30,8 +30,7 @@ public class StringCalculator {
 		else {	
 			return intNumbers.stream().mapToInt(number -> number)
 							  .sum();
-		}
-			
+			}
 	}
 
 }
