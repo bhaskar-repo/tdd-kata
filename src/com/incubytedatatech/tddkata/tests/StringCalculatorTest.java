@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+import com.incubytedatatech.tddkata.exceptions.NegativeNumberException;
 import com.incubytedatatech.tddkata.main.StringCalculator;
-import com.tdd.demo.NegativeNumberException;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class StringCalculatorTest {
