@@ -1,6 +1,7 @@
 package com.incubytedatatech.tddkata.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import com.incubytedatatech.tddkata.main.StringCalculator;
+import com.tdd.demo.NegativeNumberException;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class StringCalculatorTest {
@@ -49,5 +51,10 @@ public class StringCalculatorTest {
 	@Test
 	public void add_shouldReturnAdditionOfNumbersWithSupportedDelimiters () {
 		assertEquals(3, stringCalculator.add("//;\n1;2"));
+	}
+	
+	@Test
+	public void add_shouldThrowNegativeNumberExceptionForNegativeNumber () {
+		assertThrows(NegativeNumberException.class, () -> stringCalculator.add("-3"));
 	}
 }
