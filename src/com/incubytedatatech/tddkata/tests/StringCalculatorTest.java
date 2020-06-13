@@ -34,4 +34,10 @@ public class StringCalculatorTest {
 	public void add_shouldReturnAdditionOfTwoNumbers () {
 		assertEquals(3, stringCalculator.add("1,2"));
 	}
+	
+	@Test
+	public void add_shouldReturnAdditionOfUnknownAmountOfNumbers () {
+		
+		assertEquals(26, stringCalculator.add("1,2,5,9,3,2,4"));
+	}
 }
