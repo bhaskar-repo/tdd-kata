@@ -7,7 +7,11 @@ public class StringCalculator {
 		if ("".equals(numbers.trim())) {
 			return 0;
 		}
-	
+		String numberValues[] = numbers.split(",");
+		if (numberValues.length == 1) {
+			return Integer.valueOf(numberValues[0]);
+		}
+		
 		return null;
 	}
 
